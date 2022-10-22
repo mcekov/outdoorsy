@@ -1,9 +1,13 @@
-import React from 'react'
+import { ThemeProvider } from './context/ThemeContext'
 import Home from './Pages/Home'
 import './App.css'
 
-function App() {
-  return <Home />
+const App: React.FC = () => {
+  return (
+    <ThemeProvider initialTheme>
+      <Home />
+    </ThemeProvider>
+  )
 }
 
 export default App

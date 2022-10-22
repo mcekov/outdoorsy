@@ -1,7 +1,13 @@
+import ThemeToggle from '../components/common/ThemeToggle'
 import Search from '../components/Search'
 
 function Home() {
-  return <Search />
+  return (
+    <>
+      <ThemeToggle />
+      <Search />
+    </>
+  )
 }
 
 export default Home

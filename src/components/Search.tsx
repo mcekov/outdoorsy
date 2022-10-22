@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import SearchItem from './SearchItem'
 import { getData } from '../utils/data.util'
 
-function Search() {
+const Search = () => {
   const [searchText, setSearchText] = useState('')
   const [vehicles, setVehicles] = useState<Vehicles[]>([])
 

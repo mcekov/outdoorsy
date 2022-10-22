@@ -9,7 +9,7 @@ type SearchItemProps = {
   }
 }
 
-function SearchItem({ item }: SearchItemProps) {
+const SearchItem = ({ item }: SearchItemProps) => {
   return (
     <li key={item.id}>
       <div className="flex items-center py-5 w-[600px]">
