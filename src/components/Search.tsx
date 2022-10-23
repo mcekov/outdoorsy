@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react'
 import SearchItem from './SearchItem'
+import LoadingSpinner from './common/LoadingSpinner'
 import { getData } from '../utils/data.util'
 
 const Search = () => {
+  const [isLoading, setIsLoading] = useState(false)
   const [searchText, setSearchText] = useState('')
   const [vehicles, setVehicles] = useState<Vehicles[]>([])
 
@@ -14,8 +16,10 @@ const Search = () => {
 
   useEffect(() => {
     const retrieveData = async () => {
+      setIsLoading(true)
       const response = await getData<{ data: { data: [] } }>(url)
       setVehicles(response?.data?.data)
+      setIsLoading(false)
     }
 
     retrieveData()
@@ -34,11 +38,15 @@ const Search = () => {
         </form>
       </div>
       <div className="flex justify-center">
-        <ul>
-          {vehicles?.map((item: object, index: number) => (
-            <SearchItem key={index} item={item as any} />
-          ))}
-        </ul>
+        {isLoading ? (
+          <LoadingSpinner />
+        ) : (
+          <ul>
+            {vehicles?.map((item: object, index: number) => (
+              <SearchItem key={index} item={item as any} />
+            ))}
+          </ul>
+        )}
       </div>
     </>
   )
